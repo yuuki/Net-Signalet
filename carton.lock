@@ -1,0 +1,55 @@
+{
+   "modules" : {
+      "Net::IP::Minimal" : {
+         "dist" : "Net-IP-Minimal-0.06",
+         "mymeta" : {
+            "abstract" : "Minimal functions from Net::IP",
+            "author" : [
+               "Chris Williams <chris@bingosnet.co.uk>"
+            ],
+            "dynamic_config" : 0,
+            "generated_by" : "Dist::Zilla version 4.300028, CPAN::Meta::Converter version 2.120921",
+            "license" : [
+               "perl_5"
+            ],
+            "meta-spec" : {
+               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+               "version" : "2"
+            },
+            "name" : "Net-IP-Minimal",
+            "prereqs" : {
+               "build" : {
+                  "requires" : {}
+               },
+               "configure" : {
+                  "requires" : {
+                     "ExtUtils::MakeMaker" : "6.30"
+                  }
+               },
+               "runtime" : {
+                  "requires" : {}
+               }
+            },
+            "release_status" : "stable",
+            "resources" : {
+               "homepage" : "https://github.com/bingos/net-ip-minimal",
+               "repository" : {
+                  "url" : "https://github.com/bingos/net-ip-minimal.git"
+               }
+            },
+            "version" : "0.06"
+         },
+         "name" : "Net::IP::Minimal",
+         "pathname" : "B/BI/BINGOS/Net-IP-Minimal-0.06.tar.gz",
+         "provides" : {
+            "Net::IP::Minimal" : {
+               "file" : "Net/IP/Minimal.pm",
+               "version" : "0.06"
+            }
+         },
+         "target" : "Net::IP::Minimal",
+         "version" : "0.06"
+      }
+   },
+   "version" : "0.9"
+}
