@@ -19,7 +19,7 @@ sub new {
         LocalPort => $args{dport} || 14550,
         LocalAddr => $args{saddr} || undef,
         Listen    => $args{listen},
-        Timeout   => $args{timeout} || 5,
+        Timeout   => $args{timeout} || 0,
         ReuseAddr => $args{reuse} || 0,
     ) or die $!;
 
@@ -27,6 +27,7 @@ sub new {
     my $csock = $sock->accept; # only for one client
 
     my $self = bless {
+        worker_pid => undef,
         sock  => $csock,
         ssock => $sock,
     }, $class;
@@ -34,7 +35,7 @@ sub new {
 }
 
 sub close {
-    my $self = shift;
+    my ($self) = @_;
     $self->SUPER::close;
     close $self->{ssock};
 }

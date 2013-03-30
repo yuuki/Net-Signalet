@@ -21,7 +21,11 @@ sub new {
         Timeout   => $args{timeout} || 5,
     ) or Carp::croak "Can't connect to server: $!";
 
-    return bless { sock => $sock }, $class;
+    my $self = bless {
+        worker_pid => undef,
+        sock       => $sock
+    }, $class;
+    return $self;
 }
 
 1;

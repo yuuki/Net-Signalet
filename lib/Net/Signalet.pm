@@ -4,8 +4,8 @@ use warnings;
 our $VERSION = '0.01';
 
 use Carp ();
-use Net::IP::Minimal qw(ip_is_ipv4);
 use IO::Socket::INET;
+use Net::IP::Minimal qw(ip_is_ipv4);
 
 
 sub _init {
@@ -35,16 +35,32 @@ sub send {
     $self->{sock}->print($message);
 }
 
-sub service {
-    my ($self) = @_;
+sub run {
+    my ($self, %params) = @_;
+
+    if (!exists $params{command} && !exists $params{code}) {
+        Carp::croak "Required command or code";
+    }
+    my $pid = fork;
+    unless ($pid) {
+        # child process
+        if ($params{command}) {
+            exec($params{command});
+        }
+        elsif ($params{code}) {
+            $params{code}->();
+        }
+    }
+    $self->{worker_pid} = $pid if $pid > 0;
 }
 
-sub run {
+sub term_worker {
     my ($self) = @_;
+    kill('TERM', $self->{worker_pid});
 }
 
 sub close {
-    my $self = shift;
+    my ($self) = @_;
     close $self->{sock};
 }
 
