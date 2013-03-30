@@ -72,21 +72,66 @@ __END__
 
 =head1 NAME
 
-Net::Signalet -
+Net::Signalet - Supervisor for server's launch-and-term synchronization with client's one
 
 =head1 SYNOPSIS
+  # command
+  server$ signalet -s -b 127.0.0.1 "iperf -s"
+  client$ signalet -c 127.0.0.1 -b 127.0.0.1 "iperf -c 127.0.0.1"
 
-  use Net::Signalet;
+  #########################################
+  # server
+  use Net::Signalet::Server;
+
+  my $server = Net::Signalet::Server->new(
+    saddr => '10.0.0.1',
+    port  => 12000,
+    reuse => 1,
+  );
+
+  my $signal = $server->recv; #=> 'START'
+
+  $server->run("iperf -s -B 10.0.0.1");
+
+  $server->send('START_COMP');
+
+  $signal = $server->recv;
+  if ($signal eq "FINISH") {
+    $server->term_worker;
+  }
+  $server->close;
+
+  #########################################
+  # client
+  use Net::Signalet::Client;
+
+  my $client = Net::Signalet::Client->new(
+    saddr => '10.0.0.1',
+    port  => 12000,
+    reuse => 1,
+  );
+
+  $server->send("START");
+
+  $server->recv; # "START_COMP"
+
+  $server->run("iperf -s -B 10.0.0.1");
+
+  $server->send("FINISH");
+
+  $client->close;
 
 =head1 DESCRIPTION
 
-Net::Signalet is
+Net::Signalet is a supervisor for server's launch-and-term synchronization with client's one
 
 =head1 AUTHOR
 
 Yuuki Tsubouchi E<lt>yuuki@cpan.orgE<gt>
 
 =head1 SEE ALSO
+
+L<Proclet>
 
 =head1 LICENSE
 
