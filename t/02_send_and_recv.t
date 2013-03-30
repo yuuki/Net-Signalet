@@ -1,0 +1,35 @@
+use strict;
+use warnings;
+use lib 'lib';
+
+use Test::More;
+use Test::SharedFork;
+
+use Net::Signalet::Client;
+use Net::Signalet::Server;
+
+
+if (my $pid = fork) {
+    my $server = Net::Signalet::Server->new(
+        daddr => "127.0.0.1",
+        saddr => "127.0.0.1",
+        timeout => 0.5,
+        reuse => 1,
+    );
+    $server->send("HEYHEY");
+    $server->close;
+}
+else {
+    my $client = Net::Signalet::Client->new(
+        daddr => "127.0.0.1",
+        saddr => "127.0.0.1",
+        timeout => 0.5,
+    );
+    my $message = $client->recv;
+    if (ok $message) {
+        is $message, "HEYHEY";
+    }
+    $client->close;
+}
+
+done_testing;

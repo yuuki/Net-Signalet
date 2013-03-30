@@ -8,7 +8,7 @@ use Net::IP::Minimal qw(ip_is_ipv4);
 use IO::Socket::INET;
 
 
-sub _new {
+sub _init {
     my ($class, %args) = @_;
 
     for (qw(saddr daddr)) {
@@ -17,29 +17,35 @@ sub _new {
                 or Carp::croak "$_ is not ipv4: $args{$_}";
         }
     }
-
-    my $sock = IO::Socket::INET->new(
-        PeerAddr  => $args{daddr},
-        PeerPort  => $args{dport}  || 14550,
-        Proto     => 'tcp',
-        LocalAddr => $args{saddr}  || undef,
-        Listen    => $args{listen} || undef,
-    ) or die "Can't connect to server: $!";
-
-    my $self = bless { sock => $sock }, $class;
-    return $self;
 }
 
 sub recv {
-    my $self = shift;
+    my ($self) = @_;
+    unless ($self->{sock}) {
+        Carp::croak "recv: Not connect";
+    }
+    $self->{sock}->getline;
 }
 
 sub send {
-    my $self = shift;
+    my ($self, $message) = @_;
+    unless ($self->{sock}) {
+        Carp::croak "send: Not connect";
+    }
+    $self->{sock}->print($message);
+}
+
+sub service {
+    my ($self) = @_;
 }
 
 sub run {
+    my ($self) = @_;
+}
+
+sub close {
     my $self = shift;
+    close $self->{sock};
 }
 
 1;

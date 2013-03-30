@@ -11,7 +11,32 @@ sub new {
 
     $args{listen} ||= 1;
 
-    $class->SUPER::_new(%args);
+    $class->SUPER::_init(%args);
+
+    my $sock = IO::Socket::INET->new(
+        Proto     => 'tcp',
+        PeerAddr  => $args{daddr},
+        LocalPort => $args{dport} || 14550,
+        LocalAddr => $args{saddr} || undef,
+        Listen    => $args{listen},
+        Timeout   => $args{timeout} || 5,
+        ReuseAddr => $args{reuse} || 0,
+    ) or die $!;
+
+    $sock->listen or die $!;
+    my $csock = $sock->accept; # only for one client
+
+    my $self = bless {
+        sock  => $csock,
+        ssock => $sock,
+    }, $class;
+    return $self;
+}
+
+sub close {
+    my $self = shift;
+    $self->SUPER::close;
+    close $self->{ssock};
 }
 
 1;

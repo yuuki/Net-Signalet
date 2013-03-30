@@ -3,34 +3,37 @@ use warnings;
 use lib 'lib';
 
 use Test::More;
+use Test::Fatal;
 
 use Net::Signalet::Client;
 use Net::Signalet::Server;
 
-subtest normal => sub {
-    subtest client => sub {
-        my $signalet = Net::Signalet::Client->new(
-            daddr => "127.0.0.1",
-            saddr => "127.0.0.1",
-        );
-
-        if (ok $signalet) {
-            isa_ok $signalet, "Net::Signalet::Client";
-            isa_ok $signalet->{sock}, "IO::Socket::INET";
-        }
-    };
-
+subtest "not connect" => sub {
     subtest server => sub {
         my $signalet = Net::Signalet::Server->new(
             daddr => "127.0.0.1",
             saddr => "127.0.0.1",
+            timeout => 0.1,
+            reuse => 1,
         );
 
         if (ok $signalet) {
             isa_ok $signalet, "Net::Signalet::Server";
-            isa_ok $signalet->{sock}, "IO::Socket::INET";
+            ok !$signalet->{sock}, 'in case of not connecting to client';
+            isa_ok $signalet->{ssock}, "IO::Socket::INET";
         }
     };
+
+    subtest client => sub {
+        like exception {
+            my $signalet = Net::Signalet::Client->new(
+                daddr => "127.0.0.1",
+                saddr => "127.0.0.1",
+                timeout => 0.1,
+            );
+        }, qr(^Can't connect to server: Connection refused);
+    };
+
 };
 
 done_testing;
