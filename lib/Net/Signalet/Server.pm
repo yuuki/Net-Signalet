@@ -15,11 +15,10 @@ sub new {
 
     my $sock = IO::Socket::INET->new(
         Proto     => 'tcp',
-        PeerAddr  => $args{daddr},
-        LocalPort => $args{dport} || 14550,
+        LocalPort => $args{sport} || 14550,
         LocalAddr => $args{saddr} || undef,
         Listen    => $args{listen},
-        Timeout   => $args{timeout} || 0,
+        Timeout   => $args{timeout} || 180,
         ReuseAddr => $args{reuse} || 0,
     ) or die $!;
 

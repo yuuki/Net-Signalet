@@ -12,7 +12,6 @@ use Net::Signalet::Server;
 
 if (my $pid = fork) {
     my $server = Net::Signalet::Server->new(
-        daddr => "127.0.0.1",
         saddr => "127.0.0.1",
         timeout => 0.5,
         reuse => 1,

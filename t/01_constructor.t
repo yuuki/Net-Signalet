@@ -11,7 +11,6 @@ use Net::Signalet::Server;
 subtest "not connect" => sub {
     subtest server => sub {
         my $signalet = Net::Signalet::Server->new(
-            daddr => "127.0.0.1",
             saddr => "127.0.0.1",
             timeout => 0.1,
             reuse => 1,

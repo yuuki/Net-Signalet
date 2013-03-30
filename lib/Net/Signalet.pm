@@ -24,7 +24,9 @@ sub recv {
     unless ($self->{sock}) {
         Carp::croak "recv: Not connect";
     }
-    $self->{sock}->getline;
+    my $message = $self->{sock}->getline;
+    chomp $message;
+    return $message;
 }
 
 sub send {
@@ -32,7 +34,7 @@ sub send {
     unless ($self->{sock}) {
         Carp::croak "send: Not connect";
     }
-    $self->{sock}->print($message);
+    $self->{sock}->print($message."\n");
 }
 
 sub run {
@@ -44,8 +46,9 @@ sub run {
     my $pid = fork;
     unless ($pid) {
         # child process
-        if ($params{command}) {
-            exec($params{command});
+        if (my $command = $params{command}) {
+            my $command = join ' ', @{$params{command}} if ref($params{command}) eq 'ARRAY';
+            exec($command);
         }
         elsif ($params{code}) {
             $params{code}->();

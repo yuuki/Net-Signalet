@@ -28,4 +28,25 @@ sub new {
     return $self;
 }
 
+
+sub run {
+    my ($self, %params) = @_;
+
+    if (!exists $params{command} && !exists $params{code}) {
+        Carp::croak "Required command or code";
+    }
+    if (my $command = $params{command}) {
+        my $command = join ' ', @{$params{command}} if ref($params{command}) eq 'ARRAY';
+        system($command);
+    }
+    elsif ($params{code}) {
+        my $pid = fork;
+        unless ($pid) {
+            # child process
+            $params{code}->();
+        }
+        $self->{worker_pid} = $pid if $pid > 0;
+    }
+}
+
 1;
