@@ -75,6 +75,7 @@ __END__
 Net::Signalet - Supervisor for server's launch-and-term synchronization with client's one
 
 =head1 SYNOPSIS
+
   # command
   server$ signalet -s -b 127.0.0.1 "iperf -s"
   client$ signalet -c 127.0.0.1 -b 127.0.0.1 "iperf -c 127.0.0.1"
