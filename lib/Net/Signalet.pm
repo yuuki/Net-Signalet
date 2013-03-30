@@ -112,19 +112,20 @@ Net::Signalet - Supervisor for server's launch-and-term synchronization with cli
     reuse => 1,
   );
 
-  $server->send("START");
+  $client->send("START");
 
-  $server->recv; # "START_COMP"
+  $client->recv; # "START_COMP"
 
-  $server->run("iperf -s -B 10.0.0.1");
+  $client->run("iperf -c 10.0.0.1 -B 10.0.0.2");
 
-  $server->send("FINISH");
+  $client->send("FINISH");
 
   $client->close;
 
 =head1 DESCRIPTION
 
-Net::Signalet is a supervisor for server's launch-and-term synchronization with client's one
+Net::Signalet is a supervisor for server's launch-and-term synchronization with client's one.
+Net::Signalet helps you proflile server-client model application such as TCP server-client, Web application.
 
 =head1 AUTHOR
 
