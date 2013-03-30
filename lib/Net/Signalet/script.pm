@@ -4,6 +4,7 @@ use warnings;
 
 use Carp ();
 use Getopt::Long qw(:config no_ignore_case pass_through);
+use Term::ANSIColor;
 
 use Net::Signalet::Server;
 use Net::Signalet::Client;
@@ -107,7 +108,10 @@ sub do {
         $server->send("START_COMP");
 
         print "signalet server: kick child process\n";
+
+        print color 'yellow';
         $server->run(command => $self->{argv});
+        print color 'reset';
 
         $msg = $server->recv;
         if ($msg ne "FINISH") {
@@ -135,7 +139,10 @@ sub do {
         }
         print "signalet client: server started\n";
 
+        print color 'yellow';
         $client->run(command => $self->{argv});
+        print color 'reset';
+
         $client->send("FINISH");
         print "signalet client: finish\n";
 
