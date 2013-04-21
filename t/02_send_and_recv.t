@@ -4,7 +4,7 @@ use lib 'lib';
 
 use Test::More;
 use Test::Requires qw(
-    Test::SharedFork,
+    Test::SharedFork
 );
 
 use Net::Signalet::Client;

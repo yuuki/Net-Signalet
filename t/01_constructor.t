@@ -3,9 +3,9 @@ use warnings;
 use lib 'lib';
 
 use Test::More;
-use Test::Requires +{
-    'Test::Fatal',
-};
+use Test::Requires qw(
+    Test::Fatal
+);
 
 use Net::Signalet::Client;
 use Net::Signalet::Server;

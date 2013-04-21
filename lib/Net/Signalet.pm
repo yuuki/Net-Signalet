@@ -47,8 +47,12 @@ sub run {
     unless ($pid) {
         # child process
         if (my $command = $params{command}) {
-            my $command = join ' ', @{$params{command}} if ref($params{command}) eq 'ARRAY';
-            exec($command);
+            if (ref($params{command}) eq 'ARRAY') {
+                exec @{$params{command}};
+            }
+            else {
+                exec $command;
+            }
         }
         elsif ($params{code}) {
             $params{code}->();
@@ -59,7 +63,8 @@ sub run {
 
 sub term_worker {
     my ($self) = @_;
-    kill('TERM', $self->{worker_pid});
+    my $pgrp = getpgrp $self->{worker_pid};
+    kill(-15, $pgrp); # send TERM signal to child processes
 }
 
 sub close {

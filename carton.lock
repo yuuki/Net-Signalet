@@ -8,7 +8,7 @@
                "David Golden <dagolden@cpan.org>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "Dist::Zilla version 4.300031, CPAN::Meta::Converter version 2.120921",
+            "generated_by" : "Dist::Zilla version 4.300031, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.130880",
             "license" : [
                "apache_2_0"
             ],
@@ -119,7 +119,7 @@
                "Copyright (C) 2008 - 2010 Kazuho Oku"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "Module::Install version 1.00, CPAN::Meta::Converter version 2.120921",
+            "generated_by" : "Module::Install version 1.00, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.130880",
             "license" : [
                "perl_5"
             ],
@@ -176,7 +176,7 @@
                "Michael G Schwern <schwern@pobox.com>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "ExtUtils::MakeMaker version 6.64, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.120921",
+            "generated_by" : "ExtUtils::MakeMaker version 6.64, CPAN::Meta::Converter version 2.112621, CPAN::Meta::Converter version 2.130880",
             "license" : [
                "perl_5"
             ],
@@ -364,7 +364,7 @@
                "Tassilo von Parseval <tassilo.von.parseval@rwth-aachen.de>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "ExtUtils::MakeMaker version 6.56, CPAN::Meta::Converter version 2.120921",
+            "generated_by" : "ExtUtils::MakeMaker version 6.56, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.130880",
             "license" : [
                "perl_5"
             ],
@@ -420,7 +420,7 @@
                "Chris Williams <chris@bingosnet.co.uk>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "Dist::Zilla version 4.300028, CPAN::Meta::Converter version 2.120921",
+            "generated_by" : "Dist::Zilla version 4.300028, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.130880",
             "license" : [
                "perl_5"
             ],
@@ -470,7 +470,7 @@
                "Kazuho Oku"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "Module::Install version 1.00, CPAN::Meta::Converter version 2.120921",
+            "generated_by" : "Module::Install version 1.00, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.130880",
             "license" : [
                "perl_5"
             ],
@@ -542,7 +542,7 @@
                "C. Tilmes <curt@tilmes.org>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "ExtUtils::MakeMaker version 6.56, CPAN::Meta::Converter version 2.120921",
+            "generated_by" : "ExtUtils::MakeMaker version 6.56, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.130880",
             "license" : [
                "unknown"
             ],
@@ -594,7 +594,7 @@
                "chocolateboy <chocolate@cpan.org>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "ExtUtils::MakeMaker version 6.56, CPAN::Meta::Converter version 2.120921",
+            "generated_by" : "ExtUtils::MakeMaker version 6.56, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.130880",
             "license" : [
                "perl_5"
             ],
@@ -648,7 +648,7 @@
                "Ricardo Signes <rjbs@cpan.org>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "Dist::Zilla version 4.300007, CPAN::Meta::Converter version 2.120351, CPAN::Meta::Converter version 2.120921",
+            "generated_by" : "Dist::Zilla version 4.300007, CPAN::Meta::Converter version 2.120351, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.130880",
             "license" : [
                "perl_5"
             ],
@@ -929,7 +929,7 @@
                "Tokuhiro Matsuno <tokuhirom @*(#RJKLFHFSDLJF gmail.com>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "Module::Install version 1.00, CPAN::Meta::Converter version 2.120921",
+            "generated_by" : "Module::Install version 1.00, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.130880",
             "license" : [
                "perl_5"
             ],
@@ -990,7 +990,7 @@
                "Tokuhiro Matsuno <tokuhirom  slkjfd gmail.com>"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "Module::Install version 1.06, CPAN::Meta::Converter version 2.120921",
+            "generated_by" : "Module::Install version 1.06, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.130880",
             "license" : [
                "perl_5"
             ],
@@ -1063,7 +1063,7 @@
                "unknown"
             ],
             "dynamic_config" : 0,
-            "generated_by" : "ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120921",
+            "generated_by" : "ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.130880",
             "license" : [
                "unknown"
             ],

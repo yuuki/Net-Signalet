@@ -4,8 +4,8 @@ use lib 'lib';
 
 use Test::More;
 use Test::Requires qw(
-    Test::SharedFork,
-    Capture::Tiny,
+    Test::SharedFork
+    Capture::Tiny
 );
 
 use Net::Signalet::Client;
