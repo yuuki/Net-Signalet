@@ -3,7 +3,9 @@ use warnings;
 use lib 'lib';
 
 use Test::More;
-use Test::SharedFork;
+use Test::Requires qw(
+    Test::SharedFork,
+);
 
 use Net::Signalet::Client;
 use Net::Signalet::Server;

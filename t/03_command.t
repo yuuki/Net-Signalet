@@ -3,8 +3,10 @@ use warnings;
 use lib 'lib';
 
 use Test::More;
-use Test::SharedFork;
-use Capture::Tiny qw(capture_stdout);
+use Test::Requires qw(
+    Test::SharedFork,
+    Capture::Tiny,
+);
 
 use Net::Signalet::Client;
 use Net::Signalet::Server;
@@ -34,7 +36,7 @@ else {
         timeout => 0.5,
     );
 
-    my $result = capture_stdout {
+    my $result = Capture::Tiny::capture_stdout {
         $client->run(
             command => "echo 'HEYHEY'",
         );
