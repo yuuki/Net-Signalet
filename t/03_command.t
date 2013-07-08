@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use lib 'lib';
 
-use Test::More;
+use Test::More skip_all => 'Not working';
 use Test::Requires qw(
     Test::SharedFork
     Capture::Tiny

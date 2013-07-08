@@ -2,7 +2,7 @@ use strict;
 use warnings;
 use lib 'lib';
 
-use Test::More;
+use Test::More tests => 2;
 use Test::Requires qw(
     Test::SharedFork
 );
@@ -19,6 +19,7 @@ if (my $pid = fork) {
     );
     $server->send("HEYHEY");
     $server->close;
+    waitpid($pid, 0);
 }
 else {
     my $client = Net::Signalet::Client->new(
@@ -33,4 +34,3 @@ else {
     $client->close;
 }
 
-done_testing;
