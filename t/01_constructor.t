@@ -32,7 +32,7 @@ subtest "not connect" => sub {
                 saddr => "127.0.0.1",
                 timeout => 0.1,
             );
-        }, qr(^Can't connect to server: Connection refused);
+        }, qr(^Can't connect to server:);
     };
 
 };
