@@ -73,8 +73,9 @@
          "web" : "https://github.com/y-uuki/Net-Signalet"
       }
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_contributors" : [
-      "y_uuki <yuki.tsubo@gmail.com>"
+      "Syohei YOSHIDA <syohex@gmail.com>",
+      "Yuuki Tsubouchi <yuki.tsubo@gmail.com>"
    ]
 }
